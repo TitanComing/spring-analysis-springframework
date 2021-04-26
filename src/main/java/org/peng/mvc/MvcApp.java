@@ -5,13 +5,14 @@ import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.File;
 
 /**
  * Created by peng on 2021/4/26.
  */
-
+@EnableWebMvc
 public class MvcApp {
     public static void main(String[] args) throws Exception {
         Tomcat tomcat = new Tomcat();
