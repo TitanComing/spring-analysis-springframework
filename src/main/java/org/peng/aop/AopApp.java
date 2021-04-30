@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AopApp {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aop-beans.xml");
-        User user = (User) context.getBean("User");
+        User user = context.getBean(User.class);
         user.sayHello();
         context.close();
     }
