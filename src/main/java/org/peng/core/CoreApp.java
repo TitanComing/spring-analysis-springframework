@@ -5,12 +5,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Hello world!
- *
  */
-public class CoreApp
-{
-    public static void main( String[] args )
-    {
+public class CoreApp {
+    public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("core-beans.xml");
         SimpleBean simpleBean = context.getBean(SimpleBean.class);
         simpleBean.send();
