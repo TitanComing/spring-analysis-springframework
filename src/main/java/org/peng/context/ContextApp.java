@@ -31,6 +31,7 @@ public class ContextApp {
         Cinema cinema = applicationContext.getBean(Cinema.class);
         cinema.printMovieName();
         //入口方法:BeanDefinitionParserDelegate.parseCustomElement
+        //BeanDefinitionParserDelegate beanDefinitionParserDelegate;
         applicationContext.close();
     }
 }
