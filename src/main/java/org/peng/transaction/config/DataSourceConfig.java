@@ -22,7 +22,7 @@ public class DataSourceConfig {
 
     //数据源
     @Bean
-    public DataSource dataSourceH2() {
+    public DataSource dataSource() {
         try {
             EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
             return dbBuilder.setType(EmbeddedDatabaseType.H2)
@@ -36,25 +36,25 @@ public class DataSourceConfig {
 
     //jdbc操作类
     @Bean
-    public JdbcTemplate jdbcTemplateH2(){
+    public JdbcTemplate jdbcTemplate(){
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(dataSourceH2());
+        jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
 
     //带事务的数据源管理类-编程式事务
     @Bean
-    public PlatformTransactionManager transactionManagerH2(){
+    public PlatformTransactionManager transactionManager(){
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
-        transactionManager.setDataSource(dataSourceH2());
+        transactionManager.setDataSource(dataSource());
         return  transactionManager;
     }
 
     //带事物的jdbc操作类-编程式事务-编程式事务更推荐，一般用的是声明式事务，也就是@Transactional注解
     @Bean
-    public TransactionTemplate transactionTemplateH2() {
+    public TransactionTemplate transactionTemplate() {
         TransactionTemplate transactionTemplate = new TransactionTemplate();
-        transactionTemplate.setTransactionManager(transactionManagerH2());
+        transactionTemplate.setTransactionManager(transactionManager());
         return transactionTemplate;
     }
 

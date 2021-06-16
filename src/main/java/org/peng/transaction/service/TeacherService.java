@@ -10,7 +10,7 @@ public interface TeacherService {
     //查询教师信息
     void queryTeachers();
 
-    //更新教师年龄,所有人年龄+1
+    //分两次更新教师年龄和姓名，如果为“张老师”两次更新之间抛错
     @Transactional
     void updateTeachersAgeByName(String name);
 }
