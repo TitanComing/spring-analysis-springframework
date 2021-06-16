@@ -13,6 +13,9 @@ import org.springframework.context.annotation.ComponentScan;
 public class TransactionApp {
 
     public static void main(String[] args) {
+        //transaction入口位置
+        //org.springframework.transaction.config.TxNamespaceHandler
+
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TransactionApp.class);
         TeacherService teacherService = context.getBean(TeacherService.class);
         teacherService.queryTeachers();
