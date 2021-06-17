@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  * Create by peng on 2021/6/17.
@@ -71,6 +70,10 @@ public class UserService {
         if (1 != jdbcTemplate.update("UPDATE user SET name = ? WHERE id=?", user.getName(), user.getId())) {
             throw new RuntimeException("User not found by id");
         }
+    }
+
+    public List<User> getUsers() {
+        return jdbcTemplate.query("SELECT * FROM users", userRowMapper);
     }
 
 }

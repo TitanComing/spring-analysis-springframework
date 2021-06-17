@@ -9,8 +9,10 @@ import com.mitchellbosecke.pebble.spring.servlet.PebbleViewResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -40,11 +42,20 @@ public class WebConfig {
     }
 
 
-    //WebMvcConfigurer并不是必须的，但我们在这里创建一个默认的WebMvcConfigurer，只覆写addResourceHandlers()，
-    // 目的是让Spring MVC自动处理静态文件，并且映射路径为/static/**
     @Bean
-    WebMvcConfigurer createWebMvcConfigurer() {
+    WebMvcConfigurer createWebMvcConfigurer(@Autowired HandlerInterceptor[] interceptors) {
         return new WebMvcConfigurer() {
+
+            //注册所有的Interceptor
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                for (var interceptor : interceptors) {
+                    registry.addInterceptor(interceptor);
+                }
+            }
+
+            //覆写addResourceHandlers()，
+            // 目的是让Spring MVC自动处理静态文件，并且映射路径为/static/**
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {
                 registry.addResourceHandler("/static/**").addResourceLocations("/static/");

@@ -21,12 +21,13 @@ import java.util.Map;
 @Controller
 public class UserController {
 
+    public static final String KEY_USER = "__user__";
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private UserService userService;
 
-    private static final String KEY_USER = "__user__";
 
     @GetMapping("/")
     public ModelAndView index(HttpSession session) {

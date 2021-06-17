@@ -20,6 +20,7 @@ import java.io.File;
 @ComponentScan
 public class MVCApp {
     public static void main(String[] args) throws ServletException, LifecycleException {
+
         //使用嵌入式tomcat启动
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(Integer.getInteger("port",8080));
@@ -33,5 +34,6 @@ public class MVCApp {
 
         tomcat.start();
         tomcat.getServer().await();
+        
     }
 }

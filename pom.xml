@@ -13,10 +13,9 @@
     <properties>
         <spring.version>5.1.2.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <tomcat.version>8.0.48</tomcat.version>
         <pebble.version>3.1.2</pebble.version>
+        <jackson.version>2.11.0</jackson.version>
         <logback.version>1.2.3</logback.version>
     </properties>
 
@@ -100,6 +99,14 @@
             <version>${pebble.version}</version>
         </dependency>
 
+        <!--用于序列化，将controller接口的入参和出餐转换为json-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
         <!-- 使用logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -153,5 +160,15 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

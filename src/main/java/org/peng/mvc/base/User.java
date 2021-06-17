@@ -1,5 +1,6 @@
 package org.peng.mvc.base;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
@@ -61,6 +62,8 @@ public class User {
         this.email = email;
     }
 
+    //mvc接口序列化的时候，允许写属性，禁止读属性，防止密码暴漏
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String getPassword() {
         return password;
     }
