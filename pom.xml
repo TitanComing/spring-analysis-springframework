@@ -16,6 +16,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <tomcat.version>8.0.48</tomcat.version>
+        <pebble.version>3.1.2</pebble.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencies>
@@ -90,6 +92,24 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>${tomcat.version}</version>
+        </dependency>
+        <!--pebble web模板接卸引擎-->
+        <dependency>
+            <groupId>io.pebbletemplates</groupId>
+            <artifactId>pebble-spring5</artifactId>
+            <version>${pebble.version}</version>
+        </dependency>
+
+        <!-- 使用logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 

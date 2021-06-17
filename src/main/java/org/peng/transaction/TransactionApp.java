@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Create by peng on 2021/6/15.
  */
-@ComponentScan
 @Configurable
+@ComponentScan
 public class TransactionApp {
 
     public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class TransactionApp {
         try {
             teacherService.updateTeachersAgeByName("李老师");
         } catch (RuntimeException e) {
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         teacherService.queryTeachers();
